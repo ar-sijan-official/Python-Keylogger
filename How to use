@@ -1,47 +1,33 @@
-# How to Install and Use the Python Keylogger
+The script is a keylogger that captures keystrokes on a system using the
+pynput.keyboard library. It logs the keystrokes into a string, resets the log every 120
+seconds, and sends it via email to the specified address (email@gmail.com) using
+the smtplib library and Gmail's SMTP server. The process runs continuously in
+the background using threading until manually stopped.
+Here’s a concise guide on how to use the keylogger script in a Kali Linux
+environment, assuming the script is already saved as keylogger.py with an email and
+password configured.
+• Install Dependencies:
+o Ensure Python 3 is installed: sudo apt install python3.
+o Install pynput: pip3 install pynput.
+• Configure Gmail SMTP:
+o Enable 2FA in your Google Account.
+o Generate an App Password under "Security" > "App passwords".
+o Update the script with the App Password: nano keylogger.py, edit the
+password in my_keylogger = Keylogger(120, "email@gmail.com",
+"app-password-here").
+• Make the Script Executable:
+o Run: chmod +x keylogger.py.
+• Run the Script:
+o Execute: python3 keylogger.py (or sudo python3 keylogger.py if
+permission issues arise).
+o The script captures keystrokes and emails the log to email@gmail.com
+every 120 seconds.
+• Test the Keylogger:
 
-This guide will help you set up, configure, and run the Python keylogger that captures keystrokes and sends logs via email.
 
----
-
-## 1. Prerequisites
-
-- Python 3 installed on your system ([Download Python](https://www.python.org/downloads/))  
-- Internet connection for sending email via SMTP  
-- A Gmail account (or any SMTP-enabled email) for sending logs  
-- Basic familiarity with running commands in a terminal or command prompt  
-
----
-
-## 2. Clone the Repository
-
-Open your terminal or command prompt and run:
-
-```bash
-https://github.com/ar-sijan-official/Python-Keylogger
-cd python-keylogger
-
-Install Required Python Packages
-Install the pynput package used for capturing keyboard input:
-pip install pynput
-
-
-Configure Email Settings:
-Open the keylogger.py file in a text editor and locate this section at the bottom:
-
-my_keylogger = Keylogger(
-    time_interval=120,                   # Time in seconds between sending logs
-    email="your_email@gmail.com",       # Replace with your email address
-    password="your_email_password"      # Replace with your email password or app password
-)
-Replace "your_email@gmail.com" with your actual sender email address.
-
-Replace "your_email_password" with your email password.
-
-For Gmail accounts, it is recommended to use an App Password instead of your main password.
-
-Run the Keylogger
-To start the keylogger, run this command in your terminal:
-
-python keylogger.py
-The script will begin recording keystrokes silently and send the logs to your configured email every 2 minutes (120 seconds). You can change the interval in seconds by editing the time_interval parameter.
+o Type text in another window (e.g., “Testing in Kali”).
+o Check your email after 120 seconds for the log.
+• Stop the Script:
+o Press Ctrl + C in the terminal to stop the script.
+o If running in the background, find the PID (ps aux | grep keylogger.py)
+and terminate: kill -9 <PID>.
