@@ -1,0 +1,47 @@
+# How to Install and Use the Python Keylogger
+
+This guide will help you set up, configure, and run the Python keylogger that captures keystrokes and sends logs via email.
+
+---
+
+## 1. Prerequisites
+
+- Python 3 installed on your system ([Download Python](https://www.python.org/downloads/))  
+- Internet connection for sending email via SMTP  
+- A Gmail account (or any SMTP-enabled email) for sending logs  
+- Basic familiarity with running commands in a terminal or command prompt  
+
+---
+
+## 2. Clone the Repository
+
+Open your terminal or command prompt and run:
+
+```bash
+https://github.com/ar-sijan-official/Python-Keylogger
+cd python-keylogger
+
+Install Required Python Packages
+Install the pynput package used for capturing keyboard input:
+pip install pynput
+
+
+Configure Email Settings:
+Open the keylogger.py file in a text editor and locate this section at the bottom:
+
+my_keylogger = Keylogger(
+    time_interval=120,                   # Time in seconds between sending logs
+    email="your_email@gmail.com",       # Replace with your email address
+    password="your_email_password"      # Replace with your email password or app password
+)
+Replace "your_email@gmail.com" with your actual sender email address.
+
+Replace "your_email_password" with your email password.
+
+For Gmail accounts, it is recommended to use an App Password instead of your main password.
+
+Run the Keylogger
+To start the keylogger, run this command in your terminal:
+
+python keylogger.py
+The script will begin recording keystrokes silently and send the logs to your configured email every 2 minutes (120 seconds). You can change the interval in seconds by editing the time_interval parameter.
